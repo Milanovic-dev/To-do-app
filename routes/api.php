@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TodoController;
+use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,10 @@ Route::group([
     Route::post('me', [AuthController::class, 'me']);
 
 });
+
+Route::get('/todos/{id}', [TodoController::class, 'get'])->middleware('jwtsecure');
+Route::get('/users/{id}/todos', [TodoController::class, 'getUserTodos'])->middleware('jwtsecure');
+
+Route::post('/todos', [TodoController::class, 'create'])->middleware('jwtsecure');
+Route::put('/todos/{id}', [TodoController::class, 'update'])->middleware('jwtsecure');
+Route::delete('/todos/{id}', [TodoController::class, 'delete'])->middleware('jwtsecure');
