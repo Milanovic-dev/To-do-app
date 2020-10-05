@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TodoService {
 
-    public function userTodos($userId) 
+    public function userTodos($userId)
     {
         return Todo::where('user_id', $userId)->get();
     }
@@ -16,7 +16,7 @@ class TodoService {
         return Todo::where('id', $id)->first();
     }
 
-    public function create($user, $data) 
+    public function create($user, $data)
     {
         $todo = Todo::create([
             'title' => $data['title'],
@@ -29,7 +29,7 @@ class TodoService {
         return $todo;
     }
 
-    public function update($id, $data) 
+    public function update($id, $data)
     {
         $todo = Todo::where('id', $id)->first();
 
@@ -44,7 +44,7 @@ class TodoService {
         return $todo;
     }
 
-    public function delete($id) 
+    public function delete($id)
     {
         $todo = Todo::where('id', $id)->first();
 
